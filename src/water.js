@@ -1,7 +1,6 @@
 /* I wrote the other variables in the cosntructor regardless of settings so if the settings are changed
  * the values displayed would update on the fly since they're already stored
  */
-
 export default class water{
     
     // Constructor (Imperial)

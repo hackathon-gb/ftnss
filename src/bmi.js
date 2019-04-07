@@ -68,5 +68,5 @@ export default class bmi {
     // Set the field to the BMI value
     chartBMI(){
         // Chart at end (if time permits)
-    }0m
+    }
 }
