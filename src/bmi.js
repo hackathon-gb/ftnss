@@ -1,58 +1,65 @@
+/* I wrote the other variables in the cosntructor regardless of settings so if the settings are changed
+ * the values displayed would update on the fly since they're already stored
+ */
+
 export default class bmi {
       
     // Constructor 
     constructor(height, weight){
         var bmi_Arr = [] // Used in charting the BMI
-        var bmi;
+        var bmi; // Holds the BMI
         // If the values are negative or 0, throw an error
         if (height <= 0 || weight >= 0)
             throw new error("Invalid Input: Try Again");
-            
-
-        // Otherwise assign the variables
+        
+        // Otherwise assign the variables and push them into the array
         else{
-            // If the settings are using the imperial system, use one equation
-            calcBMI();
+            // Needs to be read from Settings
+            if(/* isImperial() */)
+                this.bmi = (this.weight * 703)/ Math.pow(this.height,2);
+            else
+                this.bmi = weight / (Math.pow(height,2));
                 
-            bmi_Arr.push(bmi);    
+            this.bmi_Arr.push(bmi);    
         }
     }
 
     // Constructor (BMI Input)
     constructor(bmi){
+        // Check for valid value
         if (bmi <= 0.0)
             throw "Invalid Input: Try again";
         else{
+            // Store BMI in array
             this.bmi = bmi;
-            bmi_Arr.push(bmi);
+            this.bmi_Arr.push(bmi);
         }
     }
 
-    calcBMI(){
-        // Needs to be read from Settings
-        if(/* isImperial() */)
-            bmi = (this.weight * 703)/ Math.pow(this.height,2);
-        else
-            bmi = weight / (Math.pow(height,2));
-    }
-
+    // Update BMI with height and weight
     updateBMI(newHeight, newWeight){
         if (newHeight <= 0 || newWeight <= 0)
             throw new error("Invalid Input: Try Again");
         else{
-            height = newHeight;
-            weight = newWeight;
-            calcBMI();
-            bmi_Arr.push(bmi);
+            this.height = newHeight;
+            this.weight = newWeight;
+            // Needs to be read from Settings
+            if(/* isImperial() */)
+                this.bmi = (this.weight * 703)/ Math.pow(this.height,2);
+            else
+                this.bmi = this.weight / (Math.pow(this.height,2));
+                
+            this.bmi_Arr.push(bmi); 
         }
     }
 
+    // Update BMI with a new BMI value
     updateBMI(newBMI){
         if (newBMI < 19)
             throw new error("Invalid Input: Try Again");
         else{
-            bmi = newBMI;
-            bmi_Arr.push(bmi);
+            this.bmi = newBMI;
+            this.bmi_Arr.push(bmi);
         }
     }
 
@@ -61,7 +68,5 @@ export default class bmi {
     // Set the field to the BMI value
     chartBMI(){
         // Chart at end (if time permits)
-    }
-
-
+    }0m
 }

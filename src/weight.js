@@ -1,3 +1,7 @@
+/* I wrote the other variables in the cosntructor regardless of settings so if the settings are changed
+ * the values displayed would update on the fly since they're already stored
+ */
+
 export default class weight{
     
     // Constructor (Imperial)
@@ -7,11 +11,11 @@ export default class weight{
         if (pounds <= 0.0)
             throw new error("Invalid Input: Try Again");
         else{
-            // Check values
+            // Store and calculate values
             this.pounds = pounds;
             this.kilograms = this.pounds / 2.2046;
-            poundsArr.push(this.pounds);
-            kilos_Arr.push(kilograms);
+            this.poundsArr.push(this.pounds);
+            this.kilos_Arr.push(kilograms);
         }
     }
 
@@ -36,8 +40,8 @@ export default class weight{
             // Store and update values
             this.pounds = newWeight_lbs;
             this.kilograms = newWeight_lbs * 2.2046;
-            poundsArr.push(pounds);
-            kilos_Arr.push(kilograms);
+            this.poundsArr.push(pounds);
+            this.kilos_Arr.push(kilograms);
         }
     }
 
@@ -50,8 +54,8 @@ export default class weight{
             // Store and update values
             this.pounds = newWeight_kilos / 2.2046;
             this.kilograms = newWeight_kilos;
-            poundsArr.push(pounds);
-            kilos_Arr.push(kilograms);
+            this.poundsArr.push(pounds);
+            this.kilos_Arr.push(kilograms);
         }
     }
     

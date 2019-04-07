@@ -6,7 +6,7 @@ export default class height{
     // Constructor (Imperial)
     constructor (feet, inches){
         var feet, inches, totalInches, centimeters; // Total Inches to be used in BMI
-        // CHeck values
+        // Check values
         if (feet <= 0 || inches < 0)
             throw new error("Invalid Input: Try Again");
         else{
@@ -46,11 +46,14 @@ export default class height{
 
     // Metric update height
     updateHeight(newCentimeters){
+        // Check value
         if (newCentimeters <= 0)
             throw new error("Invalid Input: Try Again");
         else{
-            centimeters = newCentimeters;
-            calcHeightMetricToImperial(centimeters);
+            // Store new values
+            this.centimeters = newCentimeters;
+            this.feet = (this.centimeters * 0.39370079) / 12;
+            this.inches = (this.centimeters * 0.39370079) % 12;
         }
     }
 }
